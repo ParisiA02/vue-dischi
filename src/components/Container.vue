@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <header>
+      <i class="fab fa-spotify"></i>
     </header>
     <div class="film-container">
       <Disc v-for="album,i in discArray" :key="i" :details="album"/>
@@ -25,7 +26,7 @@ export default {
     }
   },
   created(){
-    console.log(this.getDisc());
+    this.getDisc();
   },
   methods: {
     getDisc(){
@@ -44,12 +45,21 @@ export default {
   
   .container{
     width: 100%;
+    min-height: 100vh;
     background-color: #1E2D3B;
 
     header{
       width: 100%;
       height: 75px;
       background-color: #2E3A46;
+      
+      i{
+        margin: 10px 20px;
+        font-size: 50px;
+        border-radius: 40px;
+        background-color: black;
+        color: #1ED760;
+      }
     }
 
     .film-container{

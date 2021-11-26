@@ -20,4 +20,8 @@ export default {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
   }
+
+  body{
+    height: 100vh;
+  }
 </style>
