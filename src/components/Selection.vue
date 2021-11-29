@@ -1,6 +1,6 @@
 <template>
     <div class="select-container">
-        <select name="select" class="select">
+        <select name="select" class="select" @change="select()">
           <option value="All">All</option>
           <option v-for="genre,i in genreArray" :key="i" :value="genre">{{genre}}</option>
         </select>
@@ -15,7 +15,7 @@
     data(){
         return{
           apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",  
-          genreArray: []
+          genreArray: [],
         }
     },
     created(){
@@ -37,6 +37,10 @@
           console.log(tempArray);
           console.log(this.genreArray);
         })
+      },
+      select(event){
+        this.$emit('selection', event);
+        console.log(this.$emit('selection', event.genreArray.length));
       }
     }
   }

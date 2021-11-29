@@ -3,7 +3,7 @@
     <header>
       <i class="fab fa-spotify"></i>
     </header>
-    <Selection/>
+    <Selection @selection="selecting()" />
     <div class="film-container">
       <Disc v-for="album,i in discArray" :key="i" :details="album"/>
     </div>
@@ -26,10 +26,19 @@ export default {
     return{
       apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
       discArray: [],
+      displayElement:""
     }
   },
   created(){
     this.getDisc();
+  },
+  computed:{
+    //filteredList(){
+    //   return this.discArray.filter((item) =>{
+    //       return item.genre === 
+    //
+    //}
+
   },
   methods: {
     getDisc(){
@@ -38,6 +47,10 @@ export default {
       .then((result) => {
         this.discArray = result.data.response;
       })
+    },
+    selecting(text){
+      this.displayElement = text;
+      console.log(this.displayElement);
     }
   }
 }
