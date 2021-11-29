@@ -2,16 +2,44 @@
     <div class="select-container">
         <select name="select" class="select">
           <option value="All">All</option>
-          <option value="Rock">Rock</option>
-          <option value="Soul">Soul</option>
+          <option v-for="genre,i in genreArray" :key="i" :value="genre">{{genre}}</option>
         </select>
     </div>
 </template>
 
 <script>
-export default {
-  name: 'Select',
-}
+  import axios from "axios";
+  export default {
+    name: 'Selection',
+  
+    data(){
+        return{
+          apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",  
+          genreArray: []
+        }
+    },
+    created(){
+      this.getGenre();
+    },
+    methods: {
+      getGenre(){
+        axios
+        .get(this.apiUrl)
+        .then((result) => {
+          let response = result.data.response;
+          let tempArray = [];
+          for(let i = 0; i < response.length; i++){
+            tempArray.push(response[i].genre); 
+            if(!(this.genreArray.includes(tempArray[i]))){
+              this.genreArray.push(tempArray[i]);
+            }
+          }
+          console.log(tempArray);
+          console.log(this.genreArray);
+        })
+      }
+    }
+  }
 </script>
 
 <style lang="scss">

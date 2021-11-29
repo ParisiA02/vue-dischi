@@ -3,7 +3,7 @@
     <header>
       <i class="fab fa-spotify"></i>
     </header>
-    <Select/>
+    <Selection/>
     <div class="film-container">
       <Disc v-for="album,i in discArray" :key="i" :details="album"/>
     </div>
@@ -14,12 +14,12 @@
 
 import axios from "axios";
 import Disc from '@/components/Disc.vue'
-import Select from '@/components/Select.vue'
+import Selection from '@/components/Selection.vue'
 
 export default {
   name: 'Container',
   components:{
-    Select,
+    Selection,
     Disc
   },
   data(){
