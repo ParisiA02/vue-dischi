@@ -1,6 +1,6 @@
 <template>
     <div class="select-container">
-        <select name="select" class="select" @change="select()">
+        <select name="select" class="select" @change="select(event)">
           <option value="All">All</option>
           <option v-for="genre,i in genreArray" :key="i" :value="genre">{{genre}}</option>
         </select>
@@ -40,7 +40,7 @@
       },
       select(event){
         this.$emit('selection', event);
-        console.log(this.$emit('selection', event.genreArray.length));
+        console.log(this.$emit('selection', event.genreArray));
       }
     }
   }
