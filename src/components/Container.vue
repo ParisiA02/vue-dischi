@@ -3,9 +3,9 @@
     <header>
       <i class="fab fa-spotify"></i>
     </header>
-    <Selection @selection="selecting()" />
+    <Selection @selection="selecting" />
     <div class="film-container">
-      <Disc v-for="album,i in discArray" :key="i" :details="album"/>
+      <Disc v-for="album,i in filtered" :key="i" :details="album"/>
     </div>
   </div>
 </template>
@@ -33,12 +33,16 @@ export default {
     this.getDisc();
   },
   computed:{
-    //filteredList(){
-    //   return this.discArray.filter((item) =>{
-    //       return item.genre === 
-    //
-    //}
+    filtered() {
 
+      if (this.displayElement == "All") {
+        return this.discArray;
+      }
+      // il filter su discArray con displayElement
+      return this.discArray.filter((item) => {
+          return item.genre.includes(this.displayElement);
+      });
+    }
   },
   methods: {
     getDisc(){
