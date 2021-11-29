@@ -3,6 +3,7 @@
     <header>
       <i class="fab fa-spotify"></i>
     </header>
+    <Select/>
     <div class="film-container">
       <Disc v-for="album,i in discArray" :key="i" :details="album"/>
     </div>
@@ -13,10 +14,12 @@
 
 import axios from "axios";
 import Disc from '@/components/Disc.vue'
+import Select from '@/components/Select.vue'
 
 export default {
   name: 'Container',
   components:{
+    Select,
     Disc
   },
   data(){
@@ -64,7 +67,7 @@ export default {
 
     .film-container{
       width: 60%;
-      margin: 80px auto 0;
+      margin: 20px auto 0;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
