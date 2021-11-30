@@ -3,46 +3,43 @@
     <header>
       <i class="fab fa-spotify"></i>
     </header>
-    <Selection @selection="selecting" />
     <div class="film-container">
       <Disc v-for="album,i in filtered" :key="i" :details="album"/>
     </div>
   </div>
 </template>
-
 <script>
 
 import axios from "axios";
 import Disc from '@/components/Disc.vue'
-import Selection from '@/components/Selection.vue'
 
 export default {
   name: 'Container',
   components:{
-    Selection,
     Disc
   },
   data(){
     return{
       apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
       discArray: [],
-      displayElement:""
     }
+  },
+  props: {
+    selectedGenre: String
   },
   created(){
     this.getDisc();
   },
   computed:{
     filtered() {
-
-      if (this.displayElement == "All") {
+      if (this.selectedGenre == "All") {
         return this.discArray;
       }
       // il filter su discArray con displayElement
       return this.discArray.filter((item) => {
-          return item.genre.includes(this.displayElement);
+          return item.genre.includes(this.selectedGenre);
       });
-    }
+    },
   },
   methods: {
     getDisc(){
@@ -51,10 +48,6 @@ export default {
       .then((result) => {
         this.discArray = result.data.response;
       })
-    },
-    selecting(text){
-      this.displayElement = text;
-      console.log(this.displayElement);
     }
   }
 }

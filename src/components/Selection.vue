@@ -49,6 +49,7 @@
       height: 50px;
       text-align: center;
       margin: 0 auto;
+      padding-top: 10px;
     
       .select{
         text-align: center;
@@ -62,7 +63,6 @@
           width: 20%;
           max-width: 20%; /* useful when width is set to anything other than 100% */
           box-sizing: border-box;
-          margin-top: 20px;
           border: 1px solid #aaa;
           box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
           border-radius: .5em;
