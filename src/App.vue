@@ -1,6 +1,9 @@
 <template>
   <div class="contenitore">
-    <Selection @selection="selecting" />
+    <header>
+      <i class="fab fa-spotify"></i>
+      <Selection @selection="selecting" />
+    </header>
     <Container :selectedGenre="tempElement"/>
   </div>
 </template>
@@ -40,4 +43,19 @@ export default {
   body{
     height: 100vh;
   }
+
+  header{
+      width: 100%;
+      height: 75px;
+      background-color: #2E3A46;
+      display: flex;
+      justify-content: space-between;
+
+      i{
+        margin: 10px 20px;
+        font-size: 50px;
+        border-radius: 40px;
+        color: #1ED760;
+      }
+    }
 </style>
